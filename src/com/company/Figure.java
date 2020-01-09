@@ -11,13 +11,10 @@ public abstract class Figure {
         currentPositionJ = j;
     }
 
-    public Kill (){
+    public void Kill (){
         currentPositionI = -1;
         currentPositionJ = -1;
     }
 
-    public Move (byte i, byte j){
-        currentPositionI = i;
-        currentPositionJ = j;
-    }
+    public abstract boolean Move (byte i, byte j);
 }
