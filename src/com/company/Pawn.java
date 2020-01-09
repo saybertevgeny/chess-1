@@ -8,6 +8,9 @@ public class Pawn extends Figure {
 
     @Override
     public boolean Move(byte i, byte j) {
+        super.currentPositionI = i;
+        super.currentPositionJ = j;
+        //board[i][j] = Pawn;
         return true;
     }
 }
