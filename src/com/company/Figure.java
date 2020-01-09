@@ -20,4 +20,6 @@ public abstract class Figure {
         currentPositionI = i;
         currentPositionJ = j;
     }
+
+    inj
 }
