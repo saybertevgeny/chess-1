@@ -56,13 +56,24 @@ public class ChessBoard {
         board[0][5] = new Bishop(standPlayer,(byte) 0, (byte) 5);
 
         //ставим королеву
-        board[0][3] = new Queen(standPlayer,(byte) 0, (byte) 3);
+        board[0][3] = new Queen(standPlayer,(byte) 0, (byte) 4);
 
         //ставиим короля
-        board[0][4] = new King(standPlayer,(byte) 7, (byte) 4);
+        board[0][4] = new King(standPlayer,(byte) 7, (byte) 3);
 
         player = Color.WHITE;
         moveCount = 0;
+    }
+
+    public void Print(){
+        for (int i=0; i<8; i++){
+            for (int j=0; j<8; j++) {
+                if (board[i][j] == null) {
+                    System.out.print("null ");
+                } else board[i][j].Print();
+            }
+            System.out.println("");
+        }
     }
 
 }

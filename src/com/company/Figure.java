@@ -16,4 +16,8 @@ public abstract class Figure {
     }
 
     public abstract boolean Move (byte i, byte j);
+
+    public void Print(){
+        System.out.print("null ");
+    }
 }

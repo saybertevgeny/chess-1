@@ -19,7 +19,9 @@ public class Pawn extends Figure {
         return true;
     }
 
-
+    public void Print(){
+        System.out.print((figureColor == Color.WHITE) ? "wPn  " : "bPn  ");
+    }
 
 
 }

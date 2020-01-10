@@ -11,4 +11,9 @@ public class King extends Figure {
         super.pos_j = j;
         return true;
     }
+
+    public void Print(){
+        System.out.print((figureColor == Color.WHITE) ? "wK   " : "bK   ");
+    }
+
 }
