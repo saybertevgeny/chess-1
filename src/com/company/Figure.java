@@ -2,19 +2,16 @@ package com.company;
 
 public abstract class Figure {
     public final Color figureColor;
-    public byte currentPositionI;
-    public byte currentPositionJ;
+    public Position pos;
 
-    Figure (Color color, byte i, byte j) {
+    Figure (Color color, Position position) {
         figureColor = color;
-        currentPositionI = i;
-        currentPositionJ = j;
+        pos = position;
     }
 
     public void Kill (){
-        currentPositionI = -1;
-        currentPositionJ = -1;
+        //что то, что будем делать с фигурой, когда убраем ее с поля
     }
 
-    public abstract boolean Move (byte i, byte j);
+    public abstract boolean Move (Position position);
 }

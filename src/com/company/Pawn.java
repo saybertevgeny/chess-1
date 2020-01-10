@@ -2,14 +2,13 @@ package com.company;
 
 public class Pawn extends Figure {
 
-    public Pawn (Color color, byte i, byte j){
-        super(color, i, j);
+    public Pawn (Color color, Position position){
+        super(color, position);
     }
 
     @Override
-    public boolean Move(byte i, byte j) {
-        super.currentPositionI = i;
-        super.currentPositionJ = j;
+    public boolean Move(Position position) {
+        super.pos = position;
         //board[i][j] = Pawn;
         return true;
     }
