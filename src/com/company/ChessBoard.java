@@ -35,7 +35,6 @@ public class ChessBoard {
         board[7][4] = new King(standPlayer,(byte) 7, (byte) 4);
 
 
-
         //Черные:
         standPlayer = Color.BLACK;
 

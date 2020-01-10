@@ -12,14 +12,14 @@ public class Pawn extends Figure {
         return true;
     }
 
-    public Position Move (ChessBoard board){
-        Position go = new Position (this.pos_i, this.pos_j);
-
+    public boolean Move (ChessBoard board){
         if (board.moveCount == 1){
 
         }
-        return go;
+        return true;
     }
+
+
 
 
 }
