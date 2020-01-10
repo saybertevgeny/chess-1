@@ -9,7 +9,17 @@ public class Pawn extends Figure {
     @Override
     public boolean Move(Position position) {
         super.pos = position;
-        //board[i][j] = Pawn;
         return true;
     }
+
+    public Position Move (ChessBoard board){
+        Position go = this.pos;
+
+        if (board.moveCount == 1){
+
+        }
+        return go;
+    }
+
+
 }
