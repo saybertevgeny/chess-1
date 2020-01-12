@@ -10,7 +10,7 @@ public class Position {
     }
 
     public boolean InBoard(){
-        return ((i>=0)&(i<8)&(j>=0)&(j<8));
+        return ((i>=0)&&(i<8)&&(j>=0)&&(j<8));
     }
 
     public Position UpPosition(Color color){

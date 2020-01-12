@@ -17,12 +17,13 @@ public class Knight extends Figure {
     public ArrayList<Way> MoveTo (ChessBoard board){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos;
-        Way w = new Way();
+        Way w;
 
 
         //опишем вариаци хождения коня
         //#1
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
         w.way.add(pos=pos.UpPosition(figureColor));
         w.way.add(pos=pos.UpPosition(figureColor));
@@ -34,6 +35,7 @@ public class Knight extends Figure {
 
         //#2
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
         w.way.add(pos=pos.UpPosition(figureColor));
         w.way.add(pos=pos.UpPosition(figureColor));
@@ -45,6 +47,7 @@ public class Knight extends Figure {
 
         //#3
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
         w.way.add(pos=pos.RightPosition(figureColor));
         w.way.add(pos=pos.RightPosition(figureColor));
@@ -56,6 +59,7 @@ public class Knight extends Figure {
 
         //#4
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
         w.way.add(pos=pos.RightPosition(figureColor));
         w.way.add(pos=pos.RightPosition(figureColor));
@@ -67,6 +71,7 @@ public class Knight extends Figure {
 
         //#5
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
         w.way.add(pos=pos.LeftPosition(figureColor));
         w.way.add(pos=pos.LeftPosition(figureColor));
@@ -78,6 +83,7 @@ public class Knight extends Figure {
 
         //#6
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
         w.way.add(pos=pos.LeftPosition(figureColor));
         w.way.add(pos=pos.LeftPosition(figureColor));
@@ -89,6 +95,7 @@ public class Knight extends Figure {
 
         //#7
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
         w.way.add(pos=pos.DownPosition(figureColor));
         w.way.add(pos=pos.DownPosition(figureColor));
@@ -100,6 +107,7 @@ public class Knight extends Figure {
 
         //#8
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
         w.way.add(pos=pos.DownPosition(figureColor));
         w.way.add(pos=pos.DownPosition(figureColor));

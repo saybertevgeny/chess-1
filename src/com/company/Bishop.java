@@ -17,40 +17,56 @@ public class Bishop extends Figure {
     public ArrayList<Way> MoveTo (ChessBoard board){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos;
-        Way w = new Way();
+        Way w;
 
 
         //опишем вариаци хождения слона
         //#1
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
-        while (pos.InBoard()) {
-            w.way.add(pos=pos.DiagonLeftUpPosition(figureColor));
-            possibleMoves.add(w);
+        while (true) {
+            pos=pos.DiagonLeftUpPosition(figureColor);
+            if (pos.InBoard()) {
+                w.way.add(pos);
+                possibleMoves.add(w.clone());
+            } else break;
         }
 
         //#2
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
-        while (pos.InBoard()) {
-            w.way.add(pos=pos.DiagonRightUpPosition(figureColor));
-            possibleMoves.add(w);
+        while (true) {
+            pos=pos.DiagonRightUpPosition(figureColor);
+            if (pos.InBoard()) {
+                w.way.add(pos);
+                possibleMoves.add(w.clone());
+            } else break;
         }
 
         //#3
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
-        while (pos.InBoard()) {
-            w.way.add(pos=pos.DiagonLeftDownPosition(figureColor));
-            possibleMoves.add(w);
+        while (true) {
+            pos=pos.DiagonLeftDownPosition(figureColor);
+            if (pos.InBoard()) {
+                w.way.add(pos);
+                possibleMoves.add(w.clone());
+            } else break;
         }
 
         //#4
         pos = new Position (pos_i, pos_j);
+        w = new Way();
         w.way.add(pos);
-        while (pos.InBoard()) {
-            w.way.add(pos=pos.DiagonRightDownPosition(figureColor));
-            possibleMoves.add(w);
+        while (true) {
+            pos=pos.DiagonRightDownPosition(figureColor);
+            if (pos.InBoard()) {
+                w.way.add(pos);
+                possibleMoves.add(w.clone());
+            } else break;
         }
 
         return possibleMoves;

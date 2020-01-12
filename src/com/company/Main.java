@@ -7,5 +7,9 @@ public class Main {
 
         ChessBoard b = new ChessBoard();
         b.Print();
+
+        for (int i = 0; i<b.board[7][3].MoveTo(b).size(); i++){
+            b.board[7][3].MoveTo(b).get(i).Print();
+        }
     }
 }

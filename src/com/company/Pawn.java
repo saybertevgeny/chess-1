@@ -27,12 +27,12 @@ public class Pawn extends Figure {
             pos.UpPosition(figureColor);
             w.way.add(pos);
             if (pos.InBoard()){
-                possibleMoves.add(w);
+                possibleMoves.add(w.clone());
             }
         } else {
             pos.UpPosition(figureColor);
             if (pos.InBoard()){
-                possibleMoves.add(w);
+                possibleMoves.add(w.clone());
             }
         }
         return possibleMoves;

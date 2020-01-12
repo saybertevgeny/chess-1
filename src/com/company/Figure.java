@@ -21,5 +21,7 @@ public abstract class Figure {
 
     public abstract boolean MoveTo (byte i, byte j);
 
+    public abstract ArrayList<Way> MoveTo (ChessBoard board);
+
     public abstract void Print();
 }
