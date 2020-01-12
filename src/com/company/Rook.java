@@ -20,7 +20,7 @@ public class Rook extends Figure {
         Way w = new Way();
 
 
-        //опишем вариаци хождения ферзя
+        //опишем вариаци хождения ладьи
         //#1
         pos = new Position (pos_i, pos_j);
         w.way.add(pos);
