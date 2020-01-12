@@ -44,4 +44,40 @@ public class Position {
         pos.j+=1*sign;
         return pos;
     }
+
+    public Position DiagonLeftUpPosition(Color color){
+        Position pos = new Position(i,j);
+        //фигуры должны ходить зеркально друг другу, в зависимости от цвета определим смещение по i и j
+        int sign = (color==Color.WHITE) ? 1 :(-1);
+        pos.i+=1*sign;
+        pos.j+=1*sign;
+        return pos;
+    }
+
+    public Position DiagonRightUpPosition(Color color){
+        Position pos = new Position(i,j);
+        //фигуры должны ходить зеркально друг другу, в зависимости от цвета определим смещение по i и j
+        int sign = (color==Color.WHITE) ? 1 :(-1);
+        pos.i-=1*sign;
+        pos.j-=1*sign;
+        return pos;
+    }
+
+    public Position DiagonLeftDownPosition(Color color){
+        Position pos = new Position(i,j);
+        //фигуры должны ходить зеркально друг другу, в зависимости от цвета определим смещение по i и j
+        int sign = (color==Color.WHITE) ? 1 :(-1);
+        pos.i-=1*sign;
+        pos.j+=1*sign;
+        return pos;
+    }
+
+    public Position DiagonRightDownPosition(Color color){
+        Position pos = new Position(i,j);
+        //фигуры должны ходить зеркально друг другу, в зависимости от цвета определим смещение по i и j
+        int sign = (color==Color.WHITE) ? 1 :(-1);
+        pos.i+=1*sign;
+        pos.j-=1*sign;
+        return pos;
+    }
 }
