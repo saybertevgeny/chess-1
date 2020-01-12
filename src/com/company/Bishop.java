@@ -6,7 +6,7 @@ public class Bishop extends Figure {
         super(color, i, j);
     }
 
-    public boolean Move(byte i, byte j) {
+    public boolean MoveTo(byte i, byte j) {
         super.pos_i = i;
         super.pos_j = j;
         return true;

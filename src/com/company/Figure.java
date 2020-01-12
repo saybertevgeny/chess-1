@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Figure {
     public final Color figureColor;
     public byte pos_i;
@@ -12,12 +14,12 @@ public abstract class Figure {
     }
 
     public void Kill (){
-        //что то, что будем делать с фигурой, когда убраем ее с поля
+        //что делаем с фигурой, когда ее срубили, положеение "вне поля"
+        pos_i= -127;//минимальное значение типа byte
+        pos_j= -127;
     }
 
-    public abstract boolean Move (byte i, byte j);
+    public abstract boolean MoveTo (byte i, byte j);
 
-    public void Print(){
-        System.out.print("null ");
-    }
+    public abstract void Print();
 }
