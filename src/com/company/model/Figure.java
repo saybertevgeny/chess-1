@@ -15,11 +15,5 @@ public abstract class Figure {
 
     public abstract void print();
 
-    public abstract boolean moveTo (int i, int j);
-
     public abstract ArrayList<Way> possibleMovesList (int posI, int posJ);
-
-
-
-
 }

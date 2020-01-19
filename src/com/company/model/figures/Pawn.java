@@ -10,10 +10,6 @@ public class Pawn extends Figure {
         super(color, i, j);
     }
 
-    public boolean moveTo(int i, int j) {
-        return true;
-    }
-
     public ArrayList<Way> possibleMovesList (int posI, int posJ){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos = new Position (posI, posJ);

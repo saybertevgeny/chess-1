@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Checker {
     //смотрим, нет ли на пути фигур того же цвета?
-    public boolean isAllowedWay (Figure figure, Way way, ChessBoard board){
+    private boolean isAllowedWay (Figure figure, Way way, ChessBoard board){
         boolean trigger = true;
         for (int i = 1; i<way.size(); i++){
             //идем с i=1, потому что 0 элемент сущности way(путь), отвечает за стартовую позицию фиигуры
@@ -22,7 +22,7 @@ public class Checker {
     }
 
     //смотрим, нет ли на пути фигур другого цвета (не срубаем ли фигуру соперника по пути)?
-    public boolean isKillingWay (Figure figure, Way way, ChessBoard board){
+    private boolean isKillingWay (Figure figure, Way way, ChessBoard board){
         boolean isKill = false;
         for (int i = 0; i<way.size(); i++){
             if ((board.getFigureByPosition(way.getPosition(i)) != null)
@@ -34,14 +34,23 @@ public class Checker {
         return isKill;
     }
 
-    public ArrayList<Move> allowedMoves (Figure figure, ChessBoard board, byte posI, byte posJ){
+    public ArrayList<Move> allowedMoves (Figure figure, ChessBoard board, int posI, int posJ){
         ArrayList<Way> pm = figure.possibleMovesList(posI, posJ);
         Move m;
         ArrayList<Move> result = new ArrayList<Move>();
         for (int count = 1; count < pm.size(); count++) {
             if (this.isAllowedWay(figure, pm.get(count), board)){
-                //m.setMoving(pm.get(count).clone());
-
+                m = new Move(pm.get(count), false, null);
+                if (this.isKillingWay(figure, pm.get(count), board)){
+                    m.setKill(true);
+                    for (int i = 0; i<pm.get(count).size(); i++){
+                        if ((board.getFigureByPosition(pm.get(count).getPosition(i)) != null)
+                                && (board.getFigureByPosition(pm.get(count).getPosition(i)).getFigureColor() != figure.getFigureColor())) {
+                           m.setFigureInRisk(board.getFigureByPosition(pm.get(count).getPosition(i)));
+                        }
+                    }
+                }
+                result.add(m.clone());
             }
         }
         return result;

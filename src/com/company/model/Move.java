@@ -39,4 +39,10 @@ public class Move {
         Move moveCloned = new Move(this.Moving, this.IsKill,this.FigureInRisk);
         return moveCloned;
     }
+
+    public void print(){
+        System.out.print("Путь: ");
+        this.getMoving().print();
+        System.out.print(getIsKill() ? "Угроза есть" : "Угрозы нет");
+    }
 }
