@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 public class Queen extends Figure {
 
-    public Queen (Color color, byte i, byte j){
+    public Queen (Color color, int i, int j){
         super(color, i, j);
     }
 
-    public boolean moveTo(byte i, byte j) {
+    public boolean moveTo(int i, int j) {
         return true;
     }
 
-    public ArrayList<Way> possibleMovesList (byte posI, byte posJ){
+    public ArrayList<Way> possibleMovesList (int posI, int posJ){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos;
         Way w;

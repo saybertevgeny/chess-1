@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 public class King extends Figure {
 
-    public King (Color color, byte i, byte j){
+    public King (Color color, int i, int j){
         super(color, i, j);
     }
 
-    public boolean moveTo(byte i, byte j) {
+    public boolean moveTo(int i, int j) {
         return true;
     }
 
-    public ArrayList<Way> possibleMovesList (byte posI, byte posJ){
+    public ArrayList<Way> possibleMovesList (int posI, int posJ){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos;
         Way w;

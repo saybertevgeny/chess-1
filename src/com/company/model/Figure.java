@@ -9,15 +9,15 @@ public abstract class Figure {
         return figureColor;
     }
 
-    public Figure (Color color, byte i, byte j) {
+    public Figure (Color color, int i, int j) {
         figureColor = color;
     }
 
     public abstract void print();
 
-    public abstract boolean moveTo (byte i, byte j);
+    public abstract boolean moveTo (int i, int j);
 
-    public abstract ArrayList<Way> possibleMovesList (byte posI, byte posJ);
+    public abstract ArrayList<Way> possibleMovesList (int posI, int posJ);
 
     //смотрим, нет ли на пути фигур того же цвета?
     public boolean isAllowedWay (Way way, ChessBoard board){

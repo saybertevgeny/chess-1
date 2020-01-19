@@ -1,27 +1,27 @@
 package com.company.model;
 
 public class Position {
-    private byte i;
-    private byte j;
+    private int i;
+    private int j;
 
-    public Position(byte i_pos, byte j_pos){
+    public Position(int i_pos, int j_pos){
         i = i_pos;
         j = j_pos;
     }
 
-    public byte getI() {
+    public int getI() {
         return i;
     }
 
-    public byte getJ() {
+    public int getJ() {
         return j;
     }
 
-    public void setI(byte i) {
+    public void setI(int i) {
         this.i = i;
     }
 
-    public void setJ(byte j) {
+    public void setJ(int j) {
         this.j = j;
     }
 
