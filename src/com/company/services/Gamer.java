@@ -17,9 +17,10 @@ public class Gamer {
                     position = new Position((byte)row,(byte) col);
                     Figure f = board.getFigureByPosition(position);
                     //если на клетке есть фигура
-                    if ((f!= null) &&
+                    if (f!= null) {
                             // и фигура пренадлежит текущему игроку
-                            (f.getFigureColor() == board.getPlayer())){
+                            //&& (f.getFigureColor() == board.getPlayer()))
+
                         ArrayList<Way> pm = f.possibleMovesList((byte) row, (byte) col);
                         for (int count = 1; count < pm.size(); count++) {
 

@@ -19,44 +19,7 @@ public abstract class Figure {
 
     public abstract ArrayList<Way> possibleMovesList (int posI, int posJ);
 
-    //смотрим, нет ли на пути фигур того же цвета?
-    public boolean isAllowedWay (Way way, ChessBoard board){
-        boolean trigger = true;
-        for (int i = 1; i<way.size(); i++){
-            //идем с i=1, потому что 0 элемент сущности way(путь), отвечает за стартовую позицию фиигуры
-            if ((board.getFigureByPosition(way.getPosition(i)) != null)
-                    && (board.getFigureByPosition(way.getPosition(i)).getFigureColor() == this.figureColor)) {
-                trigger = false;
-            }
-        }
-        return trigger;
-    }
 
-    //смотрим, нет ли на пути фигур другого цвета (не срубаем ли фигуру соперника по пути)?
-    public boolean isKillingWay (Way way, ChessBoard board){
-        boolean isKill = false;
-        for (int i = 0; i<way.size(); i++){
-            if ((board.getFigureByPosition(way.getPosition(i)) != null)
-                    && (board.getFigureByPosition(way.getPosition(i)).getFigureColor() != this.figureColor)) {
-                isKill = true;
-            }
-        }
-        //ПРОБЛЕМА!!! Что еслии на пути 2 фигуры подряд? как быть тогда?
-        return isKill;
-    }
-
-    public ArrayList<Move> allowedMoves (ChessBoard board, byte posI, byte posJ){
-        ArrayList<Way> pm = this.possibleMovesList(posI, posJ);
-        Move m;
-        ArrayList<Move> result = new ArrayList<Move>();
-        for (int count = 1; count < pm.size(); count++) {
-            if (this.isAllowedWay(pm.get(count), board) == true){
-                //m.setMoving(pm.get(count).clone());
-
-            }
-        }
-        return result;
-    }
 
 
 }

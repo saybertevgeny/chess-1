@@ -4,38 +4,14 @@ import com.company.model.figures.*;
 
 public class ChessBoard {
     private Figure[][] board = new Figure[8][8];
-    private int moveCount;
-    private Color player;
-
-    public Color getPlayer() {
-        return player;
-    }
 
     public Figure[][] getBoard() {
         return board;
     }
 
-    public int getMoveCount() {
-        return moveCount;
-    }
-
-    //вместо setPlayer
-    public void changePlayer() {
-        if (this.player == Color.WHITE){
-            this.player = Color.BLACK;
-        } else {
-            this.player = Color.WHITE;
-        };
-    }
-
     //вместо setBoard
-    public void setBoardPosition(byte i, byte j, Figure figure) {
+    public void setBoardPosition(int i, int j, Figure figure) {
         this.board[i][j] = figure;
-    }
-
-    //вместо setMoveCount
-    public void increaseMoveCount (){
-        this.moveCount++;
     }
 
     public ChessBoard () {
@@ -46,26 +22,26 @@ public class ChessBoard {
 
         //ставим пешкии
         for (int i = 0; i < 8; i++){
-            board[6][i] = new Pawn(standPlayer,(byte) 6, (byte) i);
+            board[6][i] = new Pawn(standPlayer, 6,  i);
         }
 
         //ставим турки
-        board[7][0] = new Rook(standPlayer,(byte) 7, (byte) 0);
-        board[7][7] = new Rook(standPlayer,(byte) 7, (byte) 7);
+        board[7][0] = new Rook(standPlayer, 7, 0);
+        board[7][7] = new Rook(standPlayer, 7,  7);
 
         //ставим коней
-        board[7][1] = new Knight(standPlayer,(byte) 7, (byte) 1);
-        board[7][6] = new Knight(standPlayer,(byte) 7, (byte) 6);
+        board[7][1] = new Knight(standPlayer, 7,  1);
+        board[7][6] = new Knight(standPlayer, 7,  6);
 
         //ставим ферзей
-        board[7][2] = new Bishop(standPlayer,(byte) 7, (byte) 2);
-        board[7][5] = new Bishop(standPlayer,(byte) 7, (byte) 5);
+        board[7][2] = new Bishop(standPlayer, 7,  2);
+        board[7][5] = new Bishop(standPlayer, 7,  5);
 
         //ставим королеву
-        board[7][3] = new Queen(standPlayer,(byte) 7, (byte) 3);
+        board[7][3] = new Queen(standPlayer, 7,  3);
 
         //ставиим короля
-        board[7][4] = new King(standPlayer,(byte) 7, (byte) 4);
+        board[7][4] = new King(standPlayer, 7,  4);
 
 
         //Черные:
@@ -73,32 +49,26 @@ public class ChessBoard {
 
         //ставим пешкии
         for (int i = 0; i < 8; i++){
-            board[1][i] = new Pawn (standPlayer,(byte) 6, (byte) i);
+            board[1][i] = new Pawn (standPlayer, 6,  i);
         }
 
         //ставим турки
-        board[0][0] = new Rook(standPlayer,(byte) 0, (byte) 0);
-        board[0][7] = new Rook(standPlayer,(byte) 0, (byte) 7);
+        board[0][0] = new Rook(standPlayer, 0, 0);
+        board[0][7] = new Rook(standPlayer, 0, 7);
 
         //ставим коней
-        board[0][1] = new Knight(standPlayer,(byte) 0, (byte) 1);
-        board[0][6] = new Knight(standPlayer,(byte) 0, (byte) 6);
+        board[0][1] = new Knight(standPlayer, 0,  1);
+        board[0][6] = new Knight(standPlayer, 0,  6);
 
         //ставим ферзей
-        board[0][2] = new Bishop(standPlayer,(byte) 0, (byte) 2);
-        board[0][5] = new Bishop(standPlayer,(byte) 0, (byte) 5);
+        board[0][2] = new Bishop(standPlayer, 0,  2);
+        board[0][5] = new Bishop(standPlayer, 0,  5);
 
         //ставим королеву
-        board[0][3] = new Queen(standPlayer,(byte) 0, (byte) 4);
+        board[0][3] = new Queen(standPlayer, 0,  4);
 
         //ставиим короля
-        board[0][4] = new King(standPlayer,(byte) 7, (byte) 3);
-
-
-        //белые ходят первыми
-        player = Color.WHITE;
-        //пока ни одного хода не сделано
-        moveCount = 0;
+        board[0][4] = new King(standPlayer, 7,  3);
     }
 
     public void print(){
