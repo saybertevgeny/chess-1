@@ -2,6 +2,8 @@ package com.company.entity;
 
 import com.company.figures.*;
 
+import java.util.ArrayList;
+
 public class ChessBoard {
     private Figure[][] board = new Figure[8][8];
     private int moveCount;
@@ -111,5 +113,13 @@ public class ChessBoard {
             System.out.println("");
         }
     }
+
+    public Figure getFigureByPosition (Position position){
+        return this.board[position.getI()][position.getJ()];
+    }
+
+    /*private ArrayList<Move> allowMovesList (ChessBoard board){
+
+    }*/
 
 }

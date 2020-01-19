@@ -39,9 +39,37 @@ public abstract class Figure {
         pos_j= -127;
     }
 
+    public abstract void print();
+
     public abstract boolean moveTo (byte i, byte j);
 
     public abstract ArrayList<Way> possibleMovesList (ChessBoard board);
 
-    public abstract void print();
+    //смотрим, нет ли на пути фигур того же цвета?
+    public boolean isAllowedWay (Way way, ChessBoard board){
+        boolean trigger = true;
+        for (int i = 1; i<way.size(); i++){
+            //идем с i=1, потому что 0 элемент сущности way(путь), отвечает за стартовую позицию фиигуры
+            if ((board.getFigureByPosition(way.getPosition(i)) != null)
+                    && (board.getFigureByPosition(way.getPosition(i)).getFigureColor() == this.figureColor)) {
+                trigger = false;
+            }
+        }
+        return trigger;
+    }
+
+    //смотрим, нет ли на пути фигур другого цвета (не срубаем ли фигуру соперника по пути)?
+    public boolean isKillingWay (Way way, ChessBoard board){
+        boolean isKill = false;
+        for (int i = 0; i<way.size(); i++){
+            if ((board.getFigureByPosition(way.getPosition(i)) != null)
+                    && (board.getFigureByPosition(way.getPosition(i)).getFigureColor() != this.figureColor)) {
+                isKill = true;
+            }
+        }
+        //ПРОБЛЕМА!!! Что еслии на пути 2 фигуры подряд? как быть тогда?
+        return isKill;
+    }
+
+
 }

@@ -9,6 +9,10 @@ public class Way{
         return way;
     }
 
+    public Position getPosition (int i){
+        return this.way.get(i);
+    }
+
     /*public void setWay(ArrayList<Position> way) {
         this.way = way;
     }*/
@@ -24,6 +28,10 @@ public class Way{
             System.out.print("(" + way.get(c).getI() + ";" + way.get(c).getJ() + ")");
         }
         System.out.println();
+    }
+
+    public int size(){
+        return this.way.size();
     }
 
     public Way clone(){
