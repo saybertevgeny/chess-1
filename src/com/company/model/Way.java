@@ -1,4 +1,4 @@
-package com.company.entity;
+package com.company.model;
 
 import java.util.ArrayList;
 

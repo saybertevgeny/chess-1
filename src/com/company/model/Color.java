@@ -1,4 +1,4 @@
-package com.company.entity;
+package com.company.model;
 
 public enum Color {
     BLACK,

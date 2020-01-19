@@ -1,34 +1,32 @@
-package com.company.figures;
+package com.company.model.figures;
 
-import com.company.entity.*;
+import com.company.model.*;
 
 import java.util.ArrayList;
 
-public class Rook extends Figure {
+public class Bishop extends Figure {
 
-    public Rook (Color color, byte i, byte j){
+    public Bishop (Color color, byte i, byte j){
         super(color, i, j);
     }
 
     public boolean moveTo(byte i, byte j) {
-        super.setI(i);
-        super.setJ(j);
         return true;
     }
 
-    public ArrayList<Way> possibleMovesList (ChessBoard board){
+    public ArrayList<Way> possibleMovesList (byte posI, byte posJ){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos;
         Way w;
 
 
-        //опишем вариаци хождения ладьи
+        //опишем вариаци хождения слона
         //#1
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
-            pos=pos.upPosition(getFigureColor());
+            pos=pos.diagonLeftUpPosition(getFigureColor());
             if (pos.inBoard()) {
                 w.add(pos);
                 possibleMoves.add(w.clone());
@@ -36,11 +34,11 @@ public class Rook extends Figure {
         }
 
         //#2
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
-            pos=pos.downPosition(getFigureColor());
+            pos=pos.diagonRightUpPosition(getFigureColor());
             if (pos.inBoard()) {
                 w.add(pos);
                 possibleMoves.add(w.clone());
@@ -48,11 +46,11 @@ public class Rook extends Figure {
         }
 
         //#3
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
-            pos=pos.leftPosition(getFigureColor());
+            pos=pos.diagonLeftDownPosition(getFigureColor());
             if (pos.inBoard()) {
                 w.add(pos);
                 possibleMoves.add(w.clone());
@@ -60,11 +58,11 @@ public class Rook extends Figure {
         }
 
         //#4
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
-            pos=pos.rightPosition(getFigureColor());
+            pos=pos.diagonRightDownPosition(getFigureColor());
             if (pos.inBoard()) {
                 w.add(pos);
                 possibleMoves.add(w.clone());
@@ -75,6 +73,6 @@ public class Rook extends Figure {
     }
 
     public void print(){
-        System.out.print((getFigureColor() == Color.WHITE) ? "wRk  " : "bRk  ");
+        System.out.print((getFigureColor() == Color.WHITE) ? "wBs  " : "bBs  ");
     }
 }

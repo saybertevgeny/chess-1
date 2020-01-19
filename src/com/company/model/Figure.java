@@ -1,49 +1,23 @@
-package com.company.entity;
+package com.company.model;
 
 import java.util.ArrayList;
 
 public abstract class Figure {
     private final Color figureColor;
-    private byte pos_i;
-    private byte pos_j;
-
-    public void setI (byte i){
-        this.pos_i = i;
-    }
-
-    public void setJ (byte j){
-        this.pos_j = j;
-    }
 
     public Color getFigureColor() {
         return figureColor;
     }
 
-    public byte getPos_i() {
-        return pos_i;
-    }
-
-    public byte getPos_j() {
-        return pos_j;
-    }
-
     public Figure (Color color, byte i, byte j) {
         figureColor = color;
-        pos_i = i;
-        pos_j = j;
-    }
-
-    public void kill (){
-        //что делаем с фигурой, когда ее срубили, положеение "вне поля"
-        pos_i= -127;//минимальное значение типа byte
-        pos_j= -127;
     }
 
     public abstract void print();
 
     public abstract boolean moveTo (byte i, byte j);
 
-    public abstract ArrayList<Way> possibleMovesList (ChessBoard board);
+    public abstract ArrayList<Way> possibleMovesList (byte posI, byte posJ);
 
     //смотрим, нет ли на пути фигур того же цвета?
     public boolean isAllowedWay (Way way, ChessBoard board){
@@ -69,6 +43,19 @@ public abstract class Figure {
         }
         //ПРОБЛЕМА!!! Что еслии на пути 2 фигуры подряд? как быть тогда?
         return isKill;
+    }
+
+    public ArrayList<Move> allowedMoves (ChessBoard board, byte posI, byte posJ){
+        ArrayList<Way> pm = this.possibleMovesList(posI, posJ);
+        Move m;
+        ArrayList<Move> result = new ArrayList<Move>();
+        for (int count = 1; count < pm.size(); count++) {
+            if (this.isAllowedWay(pm.get(count), board) == true){
+                //m.setMoving(pm.get(count).clone());
+
+            }
+        }
+        return result;
     }
 
 

@@ -1,34 +1,32 @@
-package com.company.figures;
+package com.company.model.figures;
 
-import com.company.entity.*;
+import com.company.model.*;
 
 import java.util.ArrayList;
 
-public class Bishop extends Figure {
+public class Rook extends Figure {
 
-    public Bishop (Color color, byte i, byte j){
+    public Rook (Color color, byte i, byte j){
         super(color, i, j);
     }
 
     public boolean moveTo(byte i, byte j) {
-        super.setI(i);
-        super.setJ(j);
         return true;
     }
 
-    public ArrayList<Way> possibleMovesList (ChessBoard board){
+    public ArrayList<Way> possibleMovesList (byte posI, byte posJ){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos;
         Way w;
 
 
-        //опишем вариаци хождения слона
+        //опишем вариаци хождения ладьи
         //#1
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
-            pos=pos.diagonLeftUpPosition(getFigureColor());
+            pos=pos.upPosition(getFigureColor());
             if (pos.inBoard()) {
                 w.add(pos);
                 possibleMoves.add(w.clone());
@@ -36,11 +34,11 @@ public class Bishop extends Figure {
         }
 
         //#2
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
-            pos=pos.diagonRightUpPosition(getFigureColor());
+            pos=pos.downPosition(getFigureColor());
             if (pos.inBoard()) {
                 w.add(pos);
                 possibleMoves.add(w.clone());
@@ -48,11 +46,11 @@ public class Bishop extends Figure {
         }
 
         //#3
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
-            pos=pos.diagonLeftDownPosition(getFigureColor());
+            pos=pos.leftPosition(getFigureColor());
             if (pos.inBoard()) {
                 w.add(pos);
                 possibleMoves.add(w.clone());
@@ -60,11 +58,11 @@ public class Bishop extends Figure {
         }
 
         //#4
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
-            pos=pos.diagonRightDownPosition(getFigureColor());
+            pos=pos.rightPosition(getFigureColor());
             if (pos.inBoard()) {
                 w.add(pos);
                 possibleMoves.add(w.clone());
@@ -75,6 +73,6 @@ public class Bishop extends Figure {
     }
 
     public void print(){
-        System.out.print((getFigureColor() == Color.WHITE) ? "wBs  " : "bBs  ");
+        System.out.print((getFigureColor() == Color.WHITE) ? "wRk  " : "bRk  ");
     }
 }

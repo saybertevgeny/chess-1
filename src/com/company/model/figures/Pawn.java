@@ -1,6 +1,6 @@
-package com.company.figures;
+package com.company.model.figures;
 
-import com.company.entity.*;
+import com.company.model.*;
 
 import java.util.ArrayList;
 
@@ -11,19 +11,17 @@ public class Pawn extends Figure {
     }
 
     public boolean moveTo(byte i, byte j) {
-        super.setI(i);
-        super.setJ(j);
         return true;
     }
 
-    public ArrayList<Way> possibleMovesList (ChessBoard board){
+    public ArrayList<Way> possibleMovesList (byte posI, byte posJ){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
-        Position pos = new Position (getPos_i(), getPos_j());
+        Position pos = new Position (posI, posJ);
         Way w = new Way();
         w.add(pos);
 
         //если первый ход, пешка может идти на 2 клетки вперед
-        if (board.getMoveCount() == 1){
+        /*if (board.getMoveCount() == 1){
             pos.upPosition(getFigureColor());
             w.add(pos);
             pos.upPosition(getFigureColor());
@@ -31,12 +29,12 @@ public class Pawn extends Figure {
             if (pos.inBoard()){
                 possibleMoves.add(w.clone());
             }
-        } else {
+        } else {*/
             pos.upPosition(getFigureColor());
             if (pos.inBoard()){
                 possibleMoves.add(w.clone());
             }
-        }
+        //}
         return possibleMoves;
     }
 

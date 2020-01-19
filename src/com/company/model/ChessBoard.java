@@ -1,8 +1,6 @@
-package com.company.entity;
+package com.company.model;
 
-import com.company.figures.*;
-
-import java.util.ArrayList;
+import com.company.model.figures.*;
 
 public class ChessBoard {
     private Figure[][] board = new Figure[8][8];

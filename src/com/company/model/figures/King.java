@@ -1,6 +1,6 @@
-package com.company.figures;
+package com.company.model.figures;
 
-import com.company.entity.*;
+import com.company.model.*;
 
 import java.util.ArrayList;
 
@@ -11,19 +11,17 @@ public class King extends Figure {
     }
 
     public boolean moveTo(byte i, byte j) {
-        super.setI(i);
-        super.setJ(j);
         return true;
     }
 
-    public ArrayList<Way> possibleMovesList (ChessBoard board){
+    public ArrayList<Way> possibleMovesList (byte posI, byte posJ){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos;
         Way w;
 
         //опишем вариаци хождения короля
         //#1
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         pos=pos.rightPosition(getFigureColor());        ;
@@ -33,7 +31,7 @@ public class King extends Figure {
         }
 
         //#2
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         pos=pos.leftPosition(getFigureColor());
@@ -43,7 +41,7 @@ public class King extends Figure {
         }
 
         //#3
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         pos=pos.upPosition(getFigureColor());
@@ -53,7 +51,7 @@ public class King extends Figure {
         }
 
         //#4
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         pos=pos.downPosition(getFigureColor());
@@ -63,7 +61,7 @@ public class King extends Figure {
         }
 
         //#5
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         pos=pos.diagonRightUpPosition(getFigureColor());
@@ -73,7 +71,7 @@ public class King extends Figure {
         }
 
         //#6
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         pos=pos.diagonLeftUpPosition(getFigureColor());
@@ -83,7 +81,7 @@ public class King extends Figure {
         }
 
         //#7
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         pos=pos.diagonRightDownPosition(getFigureColor());
@@ -93,7 +91,7 @@ public class King extends Figure {
         }
 
         //#8
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         pos=pos.diagonLeftDownPosition(getFigureColor());

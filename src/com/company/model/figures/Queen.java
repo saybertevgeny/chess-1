@@ -1,6 +1,6 @@
-package com.company.figures;
+package com.company.model.figures;
 
-import com.company.entity.*;
+import com.company.model.*;
 
 import java.util.ArrayList;
 
@@ -11,12 +11,10 @@ public class Queen extends Figure {
     }
 
     public boolean moveTo(byte i, byte j) {
-        super.setI(i);
-        super.setJ(j);
         return true;
     }
 
-    public ArrayList<Way> possibleMovesList (ChessBoard board){
+    public ArrayList<Way> possibleMovesList (byte posI, byte posJ){
         ArrayList<Way> possibleMoves = new ArrayList<Way>();
         Position pos;
         Way w;
@@ -24,7 +22,7 @@ public class Queen extends Figure {
 
         //опишем вариаци хождения королевы
         //#1
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
@@ -36,7 +34,7 @@ public class Queen extends Figure {
         }
 
         //#2
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
@@ -48,7 +46,7 @@ public class Queen extends Figure {
         }
 
         //#3
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
@@ -60,7 +58,7 @@ public class Queen extends Figure {
         }
 
         //#4
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
@@ -72,7 +70,7 @@ public class Queen extends Figure {
         }
 
         //#5
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
@@ -84,7 +82,7 @@ public class Queen extends Figure {
         }
 
         //#6
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
@@ -96,7 +94,7 @@ public class Queen extends Figure {
         }
 
         //#7
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
@@ -108,7 +106,7 @@ public class Queen extends Figure {
         }
 
         //#8
-        pos = new Position (getPos_i(), getPos_j());
+        pos = new Position (posI, posJ);
         w = new Way();
         w.add(pos);
         while (true) {
