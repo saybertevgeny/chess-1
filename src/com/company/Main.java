@@ -1,15 +1,17 @@
 package com.company;
 
+import com.company.entity.ChessBoard;
+
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
 
         ChessBoard b = new ChessBoard();
-        b.Print();
+        b.print();
 
-        for (int i = 0; i<b.board[7][3].MoveTo(b).size(); i++){
-            b.board[7][3].MoveTo(b).get(i).Print();
+        for (int i = 0; i<b.getBoard()[7][3].possibleMovesList(b).size(); i++){
+            b.getBoard()[7][3].possibleMovesList(b).get(i).print();
         }
     }
 }

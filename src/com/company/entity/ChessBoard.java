@@ -1,9 +1,42 @@
-package com.company;
+package com.company.entity;
+
+import com.company.figures.*;
 
 public class ChessBoard {
-    public Figure[][] board = new Figure[8][8];
-    public int moveCount;
-    public Color player;
+    private Figure[][] board = new Figure[8][8];
+    private int moveCount;
+    private Color player;
+
+    public Color getPlayer() {
+        return player;
+    }
+
+    public Figure[][] getBoard() {
+        return board;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
+    //вместо setPlayer
+    public void changePlayer() {
+        if (this.player == Color.WHITE){
+            this.player = Color.BLACK;
+        } else {
+            this.player = Color.WHITE;
+        };
+    }
+
+    //вместо setBoard
+    public void setBoardPosition(byte i, byte j, Figure figure) {
+        this.board[i][j] = figure;
+    }
+
+    //вместо setMoveCount
+    public void increaseMoveCount (){
+        this.moveCount++;
+    }
 
     public ChessBoard () {
         //стартовая расстановка
@@ -13,7 +46,7 @@ public class ChessBoard {
 
         //ставим пешкии
         for (int i = 0; i < 8; i++){
-            board[6][i] = new Pawn (standPlayer,(byte) 6, (byte) i);
+            board[6][i] = new Pawn(standPlayer,(byte) 6, (byte) i);
         }
 
         //ставим турки
@@ -61,16 +94,19 @@ public class ChessBoard {
         //ставиим короля
         board[0][4] = new King(standPlayer,(byte) 7, (byte) 3);
 
+
+        //белые ходят первыми
         player = Color.WHITE;
+        //пока ни одного хода не сделано
         moveCount = 0;
     }
 
-    public void Print(){
+    public void print(){
         for (int i=0; i<8; i++){
             for (int j=0; j<8; j++) {
                 if (board[i][j] == null) {
                     System.out.print("null ");
-                } else board[i][j].Print();
+                } else board[i][j].print();
             }
             System.out.println("");
         }
