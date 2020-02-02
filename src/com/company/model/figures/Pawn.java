@@ -26,8 +26,9 @@ public class Pawn extends Figure {
                 possibleMoves.add(w.clone());
             }
         } else {*/
-            pos.upPosition(getFigureColor());
+            pos = pos.upPosition(getFigureColor());
             if (pos.inBoard()){
+                w.add(pos);
                 possibleMoves.add(w.clone());
             }
         //}

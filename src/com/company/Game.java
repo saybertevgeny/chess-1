@@ -11,7 +11,7 @@ public class Game {
             Position position;
             for (int row = 0; row < 8; row++){
                 for (int col = 0; col < 8; col++){
-                    position = new Position((byte)row,(byte) col);
+                    position = new Position(row, col);
                     Figure f = board.getFigureByPosition(position);
                     //если на клетке есть фигура
                     if (f!= null) {

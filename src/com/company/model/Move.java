@@ -41,7 +41,7 @@ public class Move {
     }
 
     public void print(){
-        System.out.print("Путь: ");
+        System.out.print("Доустимый путь: ");
         this.getMoving().print();
         System.out.print(getIsKill() ? "Угроза есть" : "Угрозы нет");
     }

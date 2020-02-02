@@ -34,6 +34,8 @@ public class Checker {
         return isKill;
     }
 
+
+    //допустимые ходы (реализуемые в данной расстановке на доске)
     public ArrayList<Move> allowedMoves (Figure figure, ChessBoard board, int posI, int posJ){
         ArrayList<Way> pm = figure.possibleMovesList(posI, posJ);
         Move m;
@@ -54,5 +56,10 @@ public class Checker {
             }
         }
         return result;
+    }
+
+    public Move randomMove (ArrayList<Move> list){
+        int r = (int) Math.random()*list.size();
+        return list.get(r);
     }
 }
