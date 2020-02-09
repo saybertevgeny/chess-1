@@ -9,6 +9,12 @@ public class Gamer {
     private Color player;
     private int moveCount;
 
+    public Gamer (){
+        this.board = new ChessBoard();
+        this.player = Color.WHITE;
+        this.moveCount = 0;
+    }
+
     //вместо setPlayer
     public void changePlayer() {
         if (this.player == Color.WHITE){
@@ -20,6 +26,10 @@ public class Gamer {
 
     public Color getPlayer() {
         return player;
+    }
+
+    public ChessBoard getBoard(){
+        return this.board;
     }
 
     //вместо setMoveCount
