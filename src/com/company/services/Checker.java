@@ -4,6 +4,7 @@ import com.company.model.ChessBoard;
 import com.company.model.Figure;
 import com.company.model.Move;
 import com.company.model.Way;
+import com.company.model.figures.King;
 
 import java.util.ArrayList;
 
@@ -61,7 +62,29 @@ public class Checker {
     }
 
     public Move randomMove (ArrayList<Move> list){
-        int r = (int) (Math.random()*list.size());
-        return list.get(r);
+        int randomNum;
+        ArrayList<Move> killingWaysList = new ArrayList<Move>();
+        //проходимся по списку допустимых ходов
+        for (int i = 0; i < list.size(); i++){
+            //если iтый элемент из списка - угрожающий
+            if (list.get(i).getIsKill()){
+                //если угрожает королю - сразу возвращаем его
+                if (list.get(i).getFigureInRisk() instanceof King){
+                    return list.get(i);
+                }
+                //иначе добавляем ход в список угрожающих
+                killingWaysList.add(list.get(i));
+            }
+        }
+
+        //есл список угрожающих ходов не пустой, выбираем рандомный из них
+        if (killingWaysList.size() > 0){
+            randomNum = (int) (Math.random()*killingWaysList.size());
+            return killingWaysList.get(randomNum);
+        } else {
+            //иначе берем рандомный из списка допустимых ходов
+            randomNum = (int) (Math.random()*list.size());
+            return list.get(randomNum);
+        }
     }
 }

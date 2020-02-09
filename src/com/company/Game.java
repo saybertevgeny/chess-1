@@ -36,14 +36,16 @@ public class Game {
                 //если допустимые ходы есть, выбираем рандомный
                 if (allowedMovesList.size() > 0) {
                     Move m = checker.randomMove(allowedMovesList);
-                    if ((m.getFigureInRisk() instanceof King) || (gamer.getMoveCount() == 15)) {
+                    if ((m.getFigureInRisk() instanceof King) || (gamer.getMoveCount() == 1000)) {
                         gamer.doMove(m);
                         gamer.getBoard().print();
+                        System.out.print("And the Winner is... ");
+                        System.out.println(gamer.getPlayer() == Color.WHITE ? "Black player!" : "White player!");
                         break game;
                     } else {
                         gamer.doMove(m);
-                        gamer.getBoard().print();
-                        System.out.println();
+                        //gamer.getBoard().print();
+                        //System.out.println();
                     }
                 }
             }
