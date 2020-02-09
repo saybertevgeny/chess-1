@@ -2,8 +2,6 @@ package com.company.services;
 
 import com.company.model.*;
 
-import java.util.ArrayList;
-
 public class Gamer {
     private ChessBoard board;
     private Color player;
@@ -39,5 +37,16 @@ public class Gamer {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    public void doMove(Move move){
+        Mover mover = new Mover();
+        this.increaseMoveCount();
+
+
+        System.out.print("Ход " + this.getMoveCount() + ": ");
+        move.print();
+        mover.moveFigureByWay(this.getBoard(), move);
+        this.changePlayer();
     }
 }

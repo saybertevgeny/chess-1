@@ -9,30 +9,41 @@ import com.company.services.Mover;
 import java.util.ArrayList;
 
 public class Game {
-    Gamer g = new Gamer();
-    Checker c;
-    Mover mover;
+    Gamer gamer = new Gamer();
+    Checker checker = new Checker();
+    Mover mover = new Mover();
 
-    public void startGame(){
-        while (true){
-            g.increaseMoveCount();
-            Position position;
-            for (int row = 0; row < 8; row++){
-                for (int col = 0; col < 8; col++){
-                    position = new Position(row, col);
-                    Figure f = g.getBoard().getFigureByPosition(position);
-                    //если на клетке есть фигура и она принадлежт текущему игроку
-                    if ((f!= null) && (f.getFigureColor() == g.getPlayer())){
-                        ArrayList<Way> pm = f.possibleMovesList(row, col);
-                        ArrayList<Move> am = c.allowedMoves(f,g.getBoard(),row,col);
-                        Move m = c.randomMove(am);
-                        if ((m.getFigureInRisk() instanceof King) || (g.getMoveCount() == 1000)){
-                            System.out.println("Ход " && g.getMoveCount());
-                            mover.moveFigureByWay(g.getBoard(),m,f);
-                            break;
-                        } else {
-                            mover.moveFigureByWay(g.getBoard(),m,f);
+    public void startGame() {
+        game:{
+            while (true) {
+                Position position;
+                ArrayList<Move> allowedMovesList = new ArrayList<>();
+                for (int row = 0; row < 8; row++) {
+                    for (int col = 0; col < 8; col++) {
+                        position = new Position(row, col);
+                        //смотрим на клетку
+                        Figure f = gamer.getBoard().getFigureByPosition(position);
+                        //если на клетке есть фигура и она принадлежт текущему игроку
+                        if ((f != null) && (f.getFigureColor() == gamer.getPlayer())) {
+                            //находим все допустимые ходы данной фигуры
+                            ArrayList<Move> am = checker.allowedMoves(f, gamer.getBoard(), row, col, (ArrayList<Move>) allowedMovesList.clone());
+                            allowedMovesList = (ArrayList<Move>) am.clone();
+
+
                         }
+                    }
+                }
+                //если допустимые ходы есть, выбираем рандомный
+                if (allowedMovesList.size() > 0) {
+                    Move m = checker.randomMove(allowedMovesList);
+                    if ((m.getFigureInRisk() instanceof King) || (gamer.getMoveCount() == 15)) {
+                        gamer.doMove(m);
+                        gamer.getBoard().print();
+                        break game;
+                    } else {
+                        gamer.doMove(m);
+                        gamer.getBoard().print();
+                        System.out.println();
                     }
                 }
             }

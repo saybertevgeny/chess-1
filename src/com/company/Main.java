@@ -18,13 +18,16 @@ public class Main {
             b.getBoard()[6][1].possibleMovesList(6,1).get(i).print();
         }
 
-        Checker c = new Checker();
+        /*Checker c = new Checker();
         ArrayList<Move> m = new ArrayList<>();
-        m = c.allowedMoves(b.getBoard()[6][1], b, 6,1);
-        for (int i = 0; i< m.size(); i++){
-            m.get(i).print();
+        ArrayList<Move> mm = c.allowedMoves(b.getBoard()[6][1], b, 6,1,m);
+        for (int i = 0; i< mm.size(); i++){
+            mm.get(i).print();
             System.out.println();
-        }
+        }*/
+
+        Game g = new Game();
+        g.startGame();
 
     }
 }

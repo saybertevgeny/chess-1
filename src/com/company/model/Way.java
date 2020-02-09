@@ -34,6 +34,10 @@ public class Way{
         return this.way.size();
     }
 
+    public Position getEndPosition (){
+        return this.getPosition(this.size()-1);
+    }
+
     public Way clone(){
             Way wayCloned = new Way();
             wayCloned.way = (ArrayList<Position>) this.way.clone();

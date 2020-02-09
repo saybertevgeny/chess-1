@@ -36,30 +36,32 @@ public class Checker {
 
 
     //допустимые ходы (реализуемые в данной расстановке на доске)
-    public ArrayList<Move> allowedMoves (Figure figure, ChessBoard board, int posI, int posJ){
+    public ArrayList<Move> allowedMoves (Figure figure, ChessBoard board, int posI, int posJ, ArrayList<Move> list){
         ArrayList<Way> pm = figure.possibleMovesList(posI, posJ);
         Move m;
-        ArrayList<Move> result = new ArrayList<Move>();
-        for (int count = 1; count < pm.size(); count++) {
-            if (this.isAllowedWay(figure, pm.get(count), board)){
-                m = new Move(pm.get(count), false, null);
-                if (this.isKillingWay(figure, pm.get(count), board)){
-                    m.setKill(true);
-                    for (int i = 0; i<pm.get(count).size(); i++){
-                        if ((board.getFigureByPosition(pm.get(count).getPosition(i)) != null)
-                                && (board.getFigureByPosition(pm.get(count).getPosition(i)).getFigureColor() != figure.getFigureColor())) {
-                           m.setFigureInRisk(board.getFigureByPosition(pm.get(count).getPosition(i)));
+
+        if (pm.size()>0){
+            for (int count = 0; count < pm.size(); count++) {
+                if (this.isAllowedWay(figure, pm.get(count), board)){
+                    m = new Move(figure, pm.get(count), false, null);
+                    if (this.isKillingWay(m.getFigure(), pm.get(count), board)){
+                        m.setKill(true);
+                        for (int i = 0; i<pm.get(count).size(); i++){
+                            if ((board.getFigureByPosition(pm.get(count).getPosition(i)) != null)
+                                    && (board.getFigureByPosition(pm.get(count).getPosition(i)).getFigureColor() != figure.getFigureColor())) {
+                                m.setFigureInRisk(board.getFigureByPosition(pm.get(count).getPosition(i)));
+                            }
                         }
                     }
+                    list.add(m.clone());
                 }
-                result.add(m.clone());
             }
         }
-        return result;
+        return list;
     }
 
     public Move randomMove (ArrayList<Move> list){
-        int r = (int) Math.random()*list.size();
+        int r = (int) (Math.random()*list.size());
         return list.get(r);
     }
 }
